@@ -82,6 +82,90 @@ h2 {
     flex-wrap: wrap;
 }
 
+.sim-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(140px, 1fr));
+    gap: 10px;
+}
+
+.menu-toggle {
+    width: 100%;
+    text-align: left;
+    background: linear-gradient(135deg, #1f3a62, #2a5c90);
+}
+
+.menu-toggle[aria-expanded="true"] {
+    background: linear-gradient(135deg, #ff5a2f, #ff8a3d);
+}
+
+.sim-menu-content {
+    margin-top: 12px;
+}
+
+.sim-btn {
+    text-align: center;
+    background: linear-gradient(135deg, #244167, #2f6b9c);
+}
+
+.sim-btn.active {
+    background: linear-gradient(135deg, #ff5a2f, #ff8a3d);
+}
+
+.sim-info {
+    margin-top: 12px;
+    padding: 10px 12px;
+    border-left: 4px solid var(--accent-2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.75);
+    color: var(--ink);
+}
+
+.coin-sim {
+    display: grid;
+    gap: 12px;
+}
+
+.coin-subtitle {
+    margin: 0;
+    color: var(--muted);
+}
+
+.coin-controls {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(130px, 1fr));
+    gap: 10px;
+    align-items: end;
+}
+
+.coin-controls label {
+    display: grid;
+    gap: 6px;
+    font-size: 0.9rem;
+    color: var(--muted);
+}
+
+.coin-controls input {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px;
+    font-family: inherit;
+    font-size: 0.95rem;
+}
+
+.coin-result {
+    border-left: 4px solid var(--accent-2);
+    border-radius: 8px;
+    padding: 10px 12px;
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.coin-metrics {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(120px, 1fr));
+    gap: 10px;
+}
+
 button {
     border: 0;
     border-radius: 12px;
@@ -279,6 +363,14 @@ button:hover {
 }
 
 @media (max-width: 800px) {
+    .sim-grid {
+        grid-template-columns: repeat(2, minmax(140px, 1fr));
+    }
+
+    .coin-controls {
+        grid-template-columns: 1fr;
+    }
+
     .positions {
         grid-template-columns: repeat(2, minmax(120px, 1fr));
     }
@@ -293,6 +385,10 @@ button:hover {
     }
 
     .answer-metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .coin-metrics {
         grid-template-columns: 1fr;
     }
 }

@@ -19,35 +19,71 @@
         <p class="subtitle">Character pool: <strong>10 digits + 26 letters = 36 symbols</strong></p>
     </header>
 
-    <section class="panel controls" aria-label="Calculation Mode">
-        <button class="mode-btn" data-repeat="true">Repetition Allowed</button>
-        <button class="mode-btn" data-repeat="false">No Repetition</button>
-    </section>
-
-    <section class="panel">
-        <h2>Choices Per Position</h2>
-        <div class="positions" id="positions"></div>
-    </section>
-
-    <section class="panel">
-        <h2>Visual Bar Chart</h2>
-        <div class="chart" id="chart"></div>
-    </section>
-
-    <section class="panel result-area" id="result" aria-live="polite"></section>
-
-    <section class="panel qa">
-        <h2>Questions</h2>
-        <div class="question-grid">
-            <button class="q-btn" data-q="drop">Why do choices decrease in the no-repetition case?</button>
-            <button class="q-btn" data-q="impact">How big is the impact of allowing repetition?</button>
-            <button class="q-btn" data-q="model">Which counting model is used in each case?</button>
-            <button class="q-btn" data-q="reason">Explain the reasoning behind the calculations.</button>
+    <section class="panel sim-menu" aria-label="Simulation Menu">
+        <button class="menu-toggle" id="simMenuToggle" aria-expanded="false" aria-controls="simMenuContent">Simulation Menu</button>
+        <div class="sim-menu-content" id="simMenuContent" hidden>
+            <div class="sim-grid">
+                <button class="sim-btn active" data-sim="password">Password Counting</button>
+                <button class="sim-btn" data-sim="coin">Coin Toss Probability</button>
+                <button class="sim-btn" data-sim="dice">Dice Sum Simulation</button>
+                <button class="sim-btn" data-sim="birthday">Birthday Collision</button>
+            </div>
+            <div class="sim-info" id="simInfo">Password Counting is active. Choose another simulation to preview what you can add next.</div>
         </div>
-        <div class="answer" id="answer" aria-live="polite">Click a question to see the explanation.</div>
+    </section>
+
+    <div id="passwordSimulation">
+        <section class="panel controls" aria-label="Calculation Mode">
+            <button class="mode-btn" data-repeat="true">Repetition Allowed</button>
+            <button class="mode-btn" data-repeat="false">No Repetition</button>
+        </section>
+
+        <section class="panel">
+            <h2>Choices Per Position</h2>
+            <div class="positions" id="positions"></div>
+        </section>
+
+        <section class="panel">
+            <h2>Visual Bar Chart</h2>
+            <div class="chart" id="chart"></div>
+        </section>
+
+        <section class="panel result-area" id="result" aria-live="polite"></section>
+
+        <section class="panel qa">
+            <h2>Questions</h2>
+            <div class="question-grid">
+                <button class="q-btn" data-q="drop">Why do choices decrease in the no-repetition case?</button>
+                <button class="q-btn" data-q="impact">How big is the impact of allowing repetition?</button>
+                <button class="q-btn" data-q="model">Which counting model is used in each case?</button>
+                <button class="q-btn" data-q="reason">Explain the reasoning behind the calculations.</button>
+            </div>
+            <div class="answer" id="answer" aria-live="polite">Click a question to see the explanation.</div>
+        </section>
+    </div>
+
+    <section class="panel coin-sim" id="coinSimulation" hidden>
+        <h2>Coin Toss Probability</h2>
+        <p class="coin-subtitle">Calculate the chance of getting exactly <strong>k</strong> heads in <strong>n</strong> tosses, and compare with Monte Carlo simulation.</p>
+        <div class="coin-controls">
+            <label>Tosses (n)
+                <input type="number" id="coinTosses" min="1" max="20" value="5">
+            </label>
+            <label>Target Heads (k)
+                <input type="number" id="coinTarget" min="0" max="20" value="3">
+            </label>
+            <label>Simulation Trials
+                <input type="number" id="coinTrials" min="100" max="200000" step="100" value="10000">
+            </label>
+            <button id="runCoinBtn" type="button">Run Coin Simulation</button>
+        </div>
+        <div class="coin-result" id="coinResult" aria-live="polite"></div>
     </section>
 </main>
 
-<script src="test.js"></script>
+<script src="simulations/shared.js"></script>
+<script src="simulations/password.js"></script>
+<script src="simulations/coin.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
