@@ -14,9 +14,9 @@
 
 <main class="app">
     <header class="hero">
-        <p class="eyebrow">Counting Principle Explorer</p>
-        <h1>5-Character Password Possibilities</h1>
-        <p class="subtitle">Character pool: <strong>10 digits + 26 letters = 36 symbols</strong></p>
+        <p class="eyebrow" id="heroEyebrow">Counting Principle Explorer</p>
+        <h1 id="heroTitle">5-Character Password Possibilities</h1>
+        <p class="subtitle" id="heroSubtitle">Character pool: <strong>10 digits + 26 letters = 36 symbols</strong></p>
     </header>
 
     <section class="panel sim-menu" aria-label="Simulation Menu">
@@ -79,11 +79,46 @@
         </div>
         <div class="coin-result" id="coinResult" aria-live="polite"></div>
     </section>
+
+    <section class="panel coin-sim" id="diceSimulation" hidden>
+        <h2>Dice Sum Simulation</h2>
+        <p class="coin-subtitle">Choose how many fair dice to roll, set a target sum, and compare the exact probability with simulation.</p>
+        <div class="coin-controls">
+            <label>Dice Count
+                <input type="number" id="diceCount" min="1" max="6" value="2">
+            </label>
+            <label>Target Sum
+                <input type="number" id="diceTarget" min="2" max="12" value="7">
+            </label>
+            <label>Simulation Trials
+                <input type="number" id="diceTrials" min="100" max="200000" step="100" value="10000">
+            </label>
+            <button id="runDiceBtn" type="button">Run Dice Simulation</button>
+        </div>
+        <div class="coin-result" id="diceResult" aria-live="polite"></div>
+    </section>
+
+    <section class="panel coin-sim" id="birthdaySimulation" hidden>
+        <h2>Birthday Collision</h2>
+        <p class="coin-subtitle">Estimate the chance that at least two people share a birthday, assuming 365 equally likely birthdays.</p>
+        <div class="coin-controls birthday-controls">
+            <label>Group Size
+                <input type="number" id="birthdayGroup" min="2" max="100" value="23">
+            </label>
+            <label>Simulation Trials
+                <input type="number" id="birthdayTrials" min="100" max="200000" step="100" value="10000">
+            </label>
+            <button id="runBirthdayBtn" type="button">Run Birthday Simulation</button>
+        </div>
+        <div class="coin-result" id="birthdayResult" aria-live="polite"></div>
+    </section>
 </main>
 
 <script src="simulations/shared.js"></script>
 <script src="simulations/password.js"></script>
 <script src="simulations/coin.js"></script>
+<script src="simulations/dice.js"></script>
+<script src="simulations/birthdayCollision.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
