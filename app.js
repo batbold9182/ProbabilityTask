@@ -9,6 +9,7 @@ const passwordSimulationDiv = document.getElementById("passwordSimulation");
 const coinSimulationDiv = document.getElementById("coinSimulation");
 const diceSimulationDiv = document.getElementById("diceSimulation");
 const birthdaySimulationDiv = document.getElementById("birthdaySimulation");
+const medalAssignmentDiv = document.getElementById("medalAssignment");
 const simInfoDiv = document.getElementById("simInfo");
 const simMenuToggle = document.getElementById("simMenuToggle");
 const simMenuContent = document.getElementById("simMenuContent");
@@ -26,6 +27,18 @@ const birthdayGroupInput = document.getElementById("birthdayGroup");
 const birthdayTrialsInput = document.getElementById("birthdayTrials");
 const runBirthdayBtn = document.getElementById("runBirthdayBtn");
 const birthdayResultDiv = document.getElementById("birthdayResult");
+const medalMiniViewBtn = document.getElementById("medalMiniViewBtn");
+const medalLargeViewBtn = document.getElementById("medalLargeViewBtn");
+const medalMiniPanel = document.getElementById("medalMiniPanel");
+const medalLargePanel = document.getElementById("medalLargePanel");
+const runMedalMiniBtn = document.getElementById("runMedalMiniBtn");
+const medalMiniTotalBtn = document.getElementById("medalMiniTotalBtn");
+const resetMedalMiniBtn = document.getElementById("resetMedalMiniBtn");
+const medalMiniOutcomeNote = document.getElementById("medalMiniOutcomeNote");
+const medalMiniResultDiv = document.getElementById("medalMiniResult");
+const medalTrialsInput = document.getElementById("medalTrials");
+const runMedalBtn = document.getElementById("runMedalBtn");
+const medalResultDiv = document.getElementById("medalResult");
 const modeButtons = document.querySelectorAll(".mode-btn");
 const questionButtons = document.querySelectorAll(".q-btn");
 const simButtons = document.querySelectorAll(".sim-btn");
@@ -34,6 +47,7 @@ const { initCoinSimulation } = window.CoinSimulation;
 const { initDiceSimulation } = window.DiceSimulation;
 const { initPasswordSimulation } = window.PasswordSimulation;
 const { initBirthdaySimulation } = window.BirthdaySimulation;
+const { initMedalSimulation } = window.MedalSimulation;
 
 const simulationMeta = {
     password: {
@@ -55,6 +69,11 @@ const simulationMeta = {
         info: "Birthday Collision is active. Estimate the probability that at least two people share a birthday in a group.",
         title: "Birthday Collision",
         subtitle: "Use the complement rule and simulation to study shared birthdays.",
+    },
+    medal: {
+        info: "Medal Assignment is active. Use the small race view for one replayable race or the large view for 100 to 200000 Monte Carlo trials.",
+        title: "Medal Assignment",
+        subtitle: "Watch 12 runners race, then scale up to a larger simulation and compare with the permutation result.",
     },
 };
 
@@ -81,6 +100,21 @@ const birthdaySimulation = initBirthdaySimulation({
     birthdayResultDiv,
 });
 
+const medalSimulation = initMedalSimulation({
+    medalMiniViewBtn,
+    medalLargeViewBtn,
+    medalMiniPanel,
+    medalLargePanel,
+    runMedalMiniBtn,
+    medalMiniTotalBtn,
+    resetMedalMiniBtn,
+    medalMiniOutcomeNote,
+    medalMiniResultDiv,
+    medalTrialsInput,
+    runMedalBtn,
+    medalResultDiv,
+});
+
 initPasswordSimulation({
     positionsDiv,
     resultDiv,
@@ -95,6 +129,7 @@ function showSimulation(simKey) {
     coinSimulationDiv.toggleAttribute("hidden", simKey !== "coin");
     diceSimulationDiv.toggleAttribute("hidden", simKey !== "dice");
     birthdaySimulationDiv.toggleAttribute("hidden", simKey !== "birthday");
+    medalAssignmentDiv.toggleAttribute("hidden", simKey !== "medal");
 }
 
 function runSelectedSimulation(simKey) {
@@ -115,6 +150,11 @@ function runSelectedSimulation(simKey) {
 
     if (simKey === "birthday") {
         birthdaySimulation.runBirthdaySimulation();
+        return;
+    }
+
+    if (simKey === "medal") {
+        medalSimulation.runMedalSimulation();
     }
 }
 

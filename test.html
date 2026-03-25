@@ -16,6 +16,7 @@
     <header class="hero">
         <p class="eyebrow" id="heroEyebrow">Counting Principle Explorer</p>
         <h1 id="heroTitle">5-Character Password Possibilities</h1>
+        
         <p class="subtitle" id="heroSubtitle">Character pool: <strong>10 digits + 26 letters = 36 symbols</strong></p>
     </header>
 
@@ -27,6 +28,7 @@
                 <button class="sim-btn" data-sim="coin">Coin Toss Probability</button>
                 <button class="sim-btn" data-sim="dice">Dice Sum Simulation</button>
                 <button class="sim-btn" data-sim="birthday">Birthday Collision</button>
+                <button class="sim-btn" data-sim="medal">Medal Assignment</button>
             </div>
             <div class="sim-info" id="simInfo">Password Counting is active. Choose another simulation to preview what you can add next.</div>
         </div>
@@ -112,6 +114,45 @@
         </div>
         <div class="coin-result" id="birthdayResult" aria-live="polite"></div>
     </section>
+
+    <section class="panel coin-sim" id="medalAssignment" hidden>
+        <h2>Medal Assignment</h2>
+        <p class="coin-subtitle">Use a small visual race view for one detailed race, then a bigger simulation for 100 to 200000 races to compare the pattern at scale.</p>
+        <div class="medal-view-switch" aria-label="Medal simulation view selector">
+            <button class="medal-view-btn active" id="medalMiniViewBtn" type="button">Small Race</button>
+            <button class="medal-view-btn" id="medalLargeViewBtn" type="button">Big Simulation</button>
+        </div>
+        <div class="medal-sections">
+            <section class="medal-mode-card" id="medalMiniPanel" aria-label="Small visual medal simulation">
+                <div class="medal-mode-copy">
+                    <h3>Small Visual Race View</h3>
+                    <p>Show one race with all 12 runners on the track, then rerun it to see a different finish order.</p>
+                </div>
+                <div class="medal-outcome-note" id="medalMiniOutcomeNote" aria-live="polite">Outcome will appear here.</div>
+                <div class="coin-result medal-mini-result" id="medalMiniResult" aria-live="polite"></div>
+                <div class="medal-mini-actions">
+                    <button id="runMedalMiniBtn" type="button">Run Small Race Again</button>
+                    <button id="medalMiniTotalBtn" type="button" disabled>Total Runs: 0</button>
+                    <button id="resetMedalMiniBtn" type="button">Reset</button>
+                </div>
+            </section>
+
+            <section class="medal-mode-card" id="medalLargePanel" aria-label="Large medal simulation" hidden>
+                <div class="medal-mode-copy">
+                    <h3>Large Simulation View</h3>
+                    <p>Run 100 to 200000 races and compare the exact probability against a Monte Carlo estimate.</p>
+                </div>
+                <div class="coin-controls medal-controls">
+                    <label>Simulation Trials
+                        <input type="number" id="medalTrials" min="100" max="200000" step="100" value="10000">
+                    </label>
+                    <button id="runMedalBtn" type="button">Run Large Simulation</button>
+                </div>
+                <div class="coin-result" id="medalResult" aria-live="polite"></div>
+            </section>
+        </div>
+    </section>
+
 </main>
 
 <script src="simulations/shared.js"></script>
@@ -119,6 +160,7 @@
 <script src="simulations/coin.js"></script>
 <script src="simulations/dice.js"></script>
 <script src="simulations/birthdayCollision.js"></script>
+<script src="simulations/medal.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

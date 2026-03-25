@@ -1,5 +1,5 @@
 (function attachSharedUtils(global) {
-    const PASSWORD_CHARACTERS = 36;
+    const PASSWORD_CHARACTERS = 36; 
     const PASSWORD_LENGTH = 5;
 
     function buildPasswordChoices(repetition) {

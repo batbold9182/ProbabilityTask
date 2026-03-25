@@ -93,7 +93,7 @@
 			const withRep = multiply(buildPasswordChoices(true));
 			const withoutRep = multiply(buildPasswordChoices(false));
 			const difference = withRep - withoutRep;
-			const ratio = (withRep / withoutRep).toFixed(2);
+			const ratio = (withRep / withoutRep).toFixed(3);
 
 			return `
 				<p>Allowing repetition keeps every slot at 36 choices. Formula: 36^${PASSWORD_LENGTH} = ${withRep.toLocaleString()}.</p>

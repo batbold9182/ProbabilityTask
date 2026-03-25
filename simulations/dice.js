@@ -82,7 +82,7 @@
 					<div class="dice-distribution-row ${sum === targetSum ? "dice-distribution-row-active" : ""}">
 						<div class="dice-distribution-head">
 							<div class="label">Sum ${sum}</div>
-							<div class="value">${(probability * 100).toFixed(2)}%</div>
+							<div class="value">${(probability * 100).toFixed(5)}%</div>
 						</div>
 						<div class="dice-distribution-track">
 							<div class="dice-distribution-fill" style="width: ${widthPercent}%"></div>
