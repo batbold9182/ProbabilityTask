@@ -308,6 +308,8 @@
 			const bothOutOf100Exact = bothSpecificProbability * 100;
 			const bothOutOf100Sim = simulatedProbability * 100;
 			const bothExactPercent = bothSpecificProbability * 100;
+			const onlyOneSpecificWays = (RUNNER_COUNT - 2) * (RUNNER_COUNT - 3) * 3;
+			const neitherSpecificWays = totalAssignments - bothSpecificWays - (onlyOneSpecificWays * 2);
 			const onlyAExactPercent = onlyOneSpecificProbability * 100;
 			const onlyBExactPercent = onlyOneSpecificProbability * 100;
 			const neitherExactPercent = (1 - bothSpecificProbability - 2 * onlyOneSpecificProbability) * 100;
@@ -353,6 +355,26 @@
 					${renderCategoryRow(`Only runner ${RUNNER_A} wins a medal`, onlyAPercent, maxCategoryPercent, false, onlyAExactPercent)}
 					${renderCategoryRow(`Only runner ${RUNNER_B} wins a medal`, onlyBPercent, maxCategoryPercent, false, onlyBExactPercent)}
 					${renderCategoryRow("Neither runner wins a medal", neitherPercent, maxCategoryPercent, false, neitherExactPercent)}
+						</div>
+					</div>
+					<div class="metric medal-visual-card medal-explainer-card">
+						<div class="label">How these percentages are calculated</div>
+						<div class="medal-explainer-stack">
+							<div class="medal-explainer-block">
+								<div class="medal-explainer-title">Exact math</div>
+								<div class="medal-explainer-line">Both win: ${bothSpecificWays} / ${totalAssignments} = ${bothExactPercent.toFixed(3)}%</div>
+								<div class="medal-explainer-line">Only runner ${RUNNER_A}: ${onlyOneSpecificWays} / ${totalAssignments} = ${onlyAExactPercent.toFixed(3)}%</div>
+								<div class="medal-explainer-line">Only runner ${RUNNER_B}: ${onlyOneSpecificWays} / ${totalAssignments} = ${onlyBExactPercent.toFixed(3)}%</div>
+								<div class="medal-explainer-line">Neither: ${neitherSpecificWays} / ${totalAssignments} = ${neitherExactPercent.toFixed(3)}%</div>
+							</div>
+							<div class="medal-explainer-block">
+								<div class="medal-explainer-title">Simulation math</div>
+								<div class="medal-explainer-line">Simulated % = category count / ${processedTrials.toLocaleString()} races x 100</div>
+								<div class="medal-explainer-line">Both: ${categoryCounts.both.toLocaleString()} / ${processedTrials.toLocaleString()} = ${bothPercent.toFixed(3)}%</div>
+								<div class="medal-explainer-line">Only runner ${RUNNER_A}: ${categoryCounts.onlyA.toLocaleString()} / ${processedTrials.toLocaleString()} = ${onlyAPercent.toFixed(3)}%</div>
+								<div class="medal-explainer-line">Only runner ${RUNNER_B}: ${categoryCounts.onlyB.toLocaleString()} / ${processedTrials.toLocaleString()} = ${onlyBPercent.toFixed(3)}%</div>
+								<div class="medal-explainer-line">Neither: ${categoryCounts.neither.toLocaleString()} / ${processedTrials.toLocaleString()} = ${neitherPercent.toFixed(3)}%</div>
+							</div>
 						</div>
 					</div>
 				</div>

@@ -702,6 +702,34 @@ button:hover {
     display: grid;
     gap: 10px;
 }
+    
+.medal-explainer-card {
+    align-content: start;
+}
+
+.medal-explainer-stack {
+    display: grid;
+    gap: 10px;
+}
+
+.medal-explainer-block {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.68);
+    padding: 12px 14px;
+    display: grid;
+    gap: 8px;
+}
+
+.medal-explainer-title {
+    font-weight: 700;
+    color: var(--ink);
+}
+
+.medal-explainer-line {
+    color: var(--muted);
+    line-height: 1.45;
+}
 
 .medal-podium {
     display: grid;
